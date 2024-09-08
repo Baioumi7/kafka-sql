@@ -50,34 +50,34 @@ services:
     networks:
       - networklab
 
-  spark-master:
-    hostname: spark-master
-    container_name: spark-master
-    image: docker.io/bitnami/spark:latest
-    environment:
-      - SPARK_MODE=master
-      - AWS_ACCESS_KEY_ID=admin
-      - AWS_SECRET_ACCESS_KEY=password
-      - AWS_REGION=us-east-1
-      - AWS_DEFAULT_REGION=us-east-1
-    ports:
-      - '8080:8080'
-      - '7077:7077'
-      - '10000:10000'
-      - '10001:10001'
-      - '2222:22'
-    networks:
-      - networklab
+  # spark-master:
+  #   hostname: spark-master
+  #   container_name: spark-master
+  #   image: docker.io/bitnami/spark:latest
+  #   environment:
+  #     - SPARK_MODE=master
+  #     - AWS_ACCESS_KEY_ID=admin
+  #     - AWS_SECRET_ACCESS_KEY=password
+  #     - AWS_REGION=us-east-1
+  #     - AWS_DEFAULT_REGION=us-east-1
+  #   ports:
+  #     - '8080:8080'
+  #     - '7077:7077'
+  #     - '10000:10000'
+  #     - '10001:10001'
+  #     - '2222:22'
+  #   networks:
+  #     - networklab
 
-  spark-worker:
-    image: docker.io/bitnami/spark:latest
-    environment:
-      - SPARK_MODE=worker
-      - SPARK_MASTER_URL=spark://spark-master:7077
-    networks:
-      - networklab
-    depends_on:
-      - spark-master
+  # spark-worker:
+  #   image: docker.io/bitnami/spark:latest
+  #   environment:
+  #     - SPARK_MODE=worker
+  #     - SPARK_MASTER_URL=spark://spark-master:7077
+  #   networks:
+  #     - networklab
+  #   depends_on:
+  #     - spark-master
 
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -87,7 +87,7 @@ services:
     environment:
      - ACCEPT_EULA=Y
      - MSSQL_PID=Standard
-     - SA_PASSWORD=Password!
+     - SA_PASSWORD=NewPassword!
      - MSSQL_AGENT_ENABLED=true
     networks:
       - networklab
